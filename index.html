@@ -77,26 +77,6 @@
       margin-bottom: 40px;
       color: #2e7d32;
     }
-    .filter-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-bottom: 40px;
-    }
-    .filter-buttons button {
-      background: #ffb6c1;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 20px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    .filter-buttons button:hover {
-      background: #ff69b4;
-    }
     .video-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -159,6 +139,11 @@
       color: #81c784;
       text-decoration: none;
     }
+    hr {
+      border: 2px dashed #ccc;
+      max-width: 80%;
+      margin: 40px auto;
+    }
     @media screen and (max-width: 600px) {
       header h1 {
         font-size: 2.5rem;
@@ -184,10 +169,6 @@
 
   <section id="videos" data-aos="fade-up">
     <h2>Featured YouTube Videos</h2>
-    <div class="filter-buttons">
-      <button onclick="filterVideos('all')">All</button>
-      <button onclick="filterVideos('desserts')">Desserts</button>
-    </div>
     <div class="video-grid">
       <div class="video-card" data-category="intro">
         <iframe src="https://www.youtube.com/embed/ychQq-kaPac" allowfullscreen title="Intro Video"></iframe>
@@ -207,6 +188,8 @@
     </div>
   </section>
 
+  <hr>
+
   <section id="testimonials" data-aos="fade-right">
     <h2>Our Journey</h2>
     <div class="testimonial">
@@ -219,6 +202,8 @@
       What drives us isn't just the numbers—it's knowing we’re helping teens find joy in creativity, confidence in the kitchen, and fun in every challenge. 100% likes across all our videos? That’s just the cherry on top. With 5 videos and over 51 likes combined, we're proud of every step."</em></p>
     </div>
   </section>
+
+  <hr>
 
   <section id="contact" data-aos="fade-left">
     <h2>Contact Us</h2>
@@ -240,14 +225,6 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init();
-
-    function filterVideos(category) {
-      const cards = document.querySelectorAll('.video-card');
-      cards.forEach(card => {
-        const matches = category === 'all' || card.dataset.category === category;
-        card.style.display = matches ? 'block' : 'none';
-      });
-    }
   </script>
 </body>
 </html>
