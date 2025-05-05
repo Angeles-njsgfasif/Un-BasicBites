@@ -6,22 +6,36 @@
   <title>The Un-Basic Bites</title>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- AOS CSS for Animations -->
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   <style>
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      margin: 0;
       font-family: 'Montserrat', sans-serif;
       background: linear-gradient(to bottom right, #ffeaf4, #e1fce1);
       color: #333;
       overflow-x: hidden;
     }
+
+    /* Parallax Effect */
+    .parallax {
+      background-image: url('https://source.unsplash.com/random/1600x900');
+      height: 500px;
+      background-position: center;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+
+    /* Header Styles */
     header {
       text-align: center;
       padding: 120px 20px 80px;
       background: linear-gradient(135deg, #ffd6ec, #ccffe0);
       position: relative;
+      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+      transform: translateZ(0);
     }
+
     header::before {
       content: "";
       position: absolute;
@@ -31,6 +45,7 @@
       opacity: 0.3;
       z-index: 0;
     }
+
     header h1 {
       font-family: 'Pacifico', cursive;
       font-size: 4.5rem;
@@ -38,12 +53,15 @@
       position: relative;
       z-index: 1;
     }
+
     header p {
       font-size: 1.4rem;
       color: #4CAF50;
       position: relative;
       z-index: 1;
     }
+
+    /* Navbar */
     nav {
       display: flex;
       justify-content: center;
@@ -52,9 +70,9 @@
       position: sticky;
       top: 0;
       z-index: 10;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       backdrop-filter: blur(6px);
     }
+
     nav a {
       margin: 0 20px;
       text-decoration: none;
@@ -63,20 +81,28 @@
       font-size: 1.1rem;
       transition: all 0.3s ease;
     }
+
     nav a:hover {
       color: #ff69b4;
+      transform: scale(1.1);
     }
+
+    /* Section Styling */
     section {
       padding: 80px 20px;
       max-width: 1100px;
       margin: auto;
+      transition: background-color 0.3s ease;
     }
+
     h2 {
       font-size: 2.4rem;
       text-align: center;
       margin-bottom: 40px;
       color: #2e7d32;
     }
+
+    /* Filter Buttons */
     .filter-buttons {
       display: flex;
       justify-content: center;
@@ -84,6 +110,7 @@
       flex-wrap: wrap;
       margin-bottom: 40px;
     }
+
     .filter-buttons button {
       background: #ffb6c1;
       color: #fff;
@@ -92,37 +119,50 @@
       border-radius: 20px;
       font-weight: bold;
       cursor: pointer;
-      transition: background 0.3s ease;
+      transition: background 0.3s ease, transform 0.3s ease;
     }
+
     .filter-buttons button:hover {
       background: #ff69b4;
+      transform: scale(1.1);
     }
+
+    /* Video Grid */
     .video-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 40px;
     }
+
     .video-card {
       background: white;
       border-radius: 20px;
       overflow: hidden;
       box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      transition: transform 0.4s ease;
+      transition: transform 0.4s ease, box-shadow 0.3s ease;
     }
+
     .video-card:hover {
       transform: scale(1.05);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
     }
+
     .video-card iframe {
       width: 100%;
       height: 200px;
     }
+
+    /* Testimonial Section */
     .testimonial {
       background: #fff0f6;
       padding: 30px;
       border-left: 5px solid #ff69b4;
       margin-bottom: 30px;
       border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
+
+    /* Contact Form */
     .contact-form input, .contact-form textarea {
       width: 100%;
       padding: 15px;
@@ -130,7 +170,14 @@
       border-radius: 12px;
       border: 2px solid #a5d6a7;
       font-size: 1rem;
+      transition: all 0.3s ease;
     }
+
+    .contact-form input:focus, .contact-form textarea:focus {
+      border-color: #ff69b4;
+      box-shadow: 0 0 8px rgba(255, 105, 180, 0.6);
+    }
+
     .contact-form button {
       background: #4CAF50;
       color: white;
@@ -141,9 +188,12 @@
       cursor: pointer;
       transition: background 0.3s ease;
     }
+
     .contact-form button:hover {
       background: #66bb6a;
+      transform: translateY(-5px);
     }
+
     footer {
       text-align: center;
       padding: 30px 10px;
@@ -151,43 +201,31 @@
       font-size: 0.9rem;
       color: #777;
     }
+
     footer i {
       margin: 0 8px;
-      font-size: 1.2rem;
+      font-size: 1.5rem;
+      transition: transform 0.3s ease;
     }
+
+    footer i:hover {
+      transform: scale(1.2);
+    }
+
     footer a {
       color: #81c784;
       text-decoration: none;
     }
 
-    /* Cake Catcher Game Styles */
-    .game-container {
-      margin: 60px auto;
-      width: 80%;
-      height: 300px;
-      background-color: #f9f9f9;
-      border: 2px solid #ff69b4;
-      border-radius: 10px;
-      position: relative;
-      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    @media screen and (max-width: 600px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
     }
-    .game-container canvas {
-      display: block;
-      margin: 0 auto;
-    }
-    .score {
-      font-size: 1.5rem;
-      color: #ff69b4;
-      text-align: center;
-      margin-top: 20px;
-    }
-    .game-over {
-      font-size: 2rem;
-      color: red;
-      text-align: center;
-      display: none;
-    }
-
   </style>
 </head>
 <body>
@@ -201,6 +239,9 @@
     <a href="#testimonials">Testimonials</a>
     <a href="#contact">Contact</a>
   </nav>
+
+  <!-- Parallax Section -->
+  <div class="parallax"></div>
 
   <section id="videos" data-aos="fade-up">
     <h2>Featured YouTube Videos</h2>
@@ -227,26 +268,10 @@
     </div>
   </section>
 
-  <!-- Cake Catcher Game -->
-  <section id="game" data-aos="fade-up">
-    <h2>Catch the Cake Game</h2>
-    <div class="game-container">
-      <canvas id="gameCanvas" width="600" height="300"></canvas>
-    </div>
-    <div class="score" id="score">Score: 0</div>
-    <div class="game-over" id="gameOver">Game Over! Refresh to Play Again.</div>
-  </section>
-
   <section id="testimonials" data-aos="fade-right">
     <h2>Our Journey</h2>
     <div class="testimonial">
-      <p><em>"From a fun idea in our kitchen to a full-on teen cooking movement, The Un-Basic Bites has become a place where creativity and courage mix perfectly with cookie dough and frosting! Our very first video—‘Un-Basic Bites: Intro Video’—got the buzz going with 10 likes and supportive comments from day one.
-
-      Then came the unforgettable Brookie Challenge with Caitlyn! Whether it was the full bake tutorial or the wild Roblox spinoff, our followers loved every second. One episode had over <strong>6 likes</strong> and another hit <strong>9</strong>, showing us that mixing brownies with gaming can actually work.
-
-      But nothing hit home like Caitlyn's epic kitchen takeover. Between the Wilanne’s and Christman’s cuts, we received <strong>a combined 15+ likes</strong>!
-
-      What drives us isn't just the numbers—it's knowing we’re helping teens find joy in creativity, confidence in the kitchen, and fun in every challenge. With 5 videos, over 21 subscribers, and 181 views combined, we're proud of every step."</em></p>
+      <p><em>"From a fun idea in our kitchen to a full-on teen cooking movement, The Un-Basic Bites has become a place where creativity and courage mix perfectly with cookie dough and frosting! Our very first video—‘Un-Basic Bites: Intro Video’—got the buzz going with 10 likes and supportive comments from day one.</em></p>
     </div>
   </section>
 
@@ -263,90 +288,18 @@
   <footer>
     <p>&copy; 2025 The Un-Basic Bites | Follow us:
       <a href="https://www.instagram.com/unbasicbites" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.youtube.com/channel/unbasicbites" target="_blank"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.youtube.com/channel/UC9H2T-NpG..." target="_blank"><i class="fab fa-youtube"></i></a>
     </p>
   </footer>
 
+  <!-- AOS JavaScript for Animations -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    // Game Script
-    const canvas = document.getElementById('gameCanvas');
-    const ctx = canvas.getContext('2d');
-    const scoreDisplay = document.getElementById('score');
-    const gameOverDisplay = document.getElementById('gameOver');
-    let score = 0;
-    let basket = { x: canvas.width / 2 - 50, width: 100, height: 20, dx: 0 };
-    let cakes = [];
-    let gameOver = false;
-
-    // Handle keyboard events
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft' || e.key === 'a') {
-        basket.dx = -5;
-      } else if (e.key === 'ArrowRight' || e.key === 'd') {
-        basket.dx = 5;
-      }
+    AOS.init({
+      duration: 1000,
+      easing: 'ease-in-out',
+      once: true,
     });
-    document.addEventListener('keyup', () => {
-      basket.dx = 0;
-    });
-
-    // Create cake
-    function createCake() {
-      let x = Math.random() * (canvas.width - 30);
-      cakes.push({ x: x, y: 0, radius: 15, dy: 2 });
-    }
-
-    // Draw basket
-    function drawBasket() {
-      ctx.fillStyle = '#ff69b4';
-      ctx.fillRect(basket.x, canvas.height - basket.height, basket.width, basket.height);
-    }
-
-    // Draw cakes
-    function drawCakes() {
-      ctx.fillStyle = 'yellow';
-      cakes.forEach((cake) => {
-        ctx.beginPath();
-        ctx.arc(cake.x, cake.y, cake.radius, 0, Math.PI * 2);
-        ctx.fill();
-        cake.y += cake.dy;
-      });
-    }
-
-    // Check collision
-    function checkCollision() {
-      cakes.forEach((cake, index) => {
-        if (cake.y + cake.radius > canvas.height - basket.height && cake.x > basket.x && cake.x < basket.x + basket.width) {
-          score++;
-          cakes.splice(index, 1);
-        } else if (cake.y + cake.radius > canvas.height) {
-          gameOver = true;
-        }
-      });
-    }
-
-    // Update game
-    function updateGame() {
-      if (gameOver) {
-        gameOverDisplay.style.display = 'block';
-        return;
-      }
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      drawBasket();
-      drawCakes();
-      checkCollision();
-      scoreDisplay.textContent = `Score: ${score}`;
-      basket.x += basket.dx;
-      if (basket.x < 0) basket.x = 0;
-      if (basket.x + basket.width > canvas.width) basket.x = canvas.width - basket.width;
-      requestAnimationFrame(updateGame);
-    }
-
-    // Start game
-    setInterval(createCake, 1000);
-    updateGame();
   </script>
 </body>
 </html>
-
-
